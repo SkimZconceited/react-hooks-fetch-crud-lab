@@ -12,10 +12,21 @@ function QuestionList() {
       });
   }, []);
 
+
+  function handleDelete(deletedItem) {
+    const deletedItems = questions.filter((question) => question.id !== deletedItem.id)
+
+    setQuestions(deletedItems);
+  }
+
   return (
     <section>
       <h1>Quiz Questions</h1>
-      <ul>{questions.map((question) => <QuestionItem question={question} />)}</ul>
+      <ul>
+        {questions.map((questions) => (
+          <QuestionItem question={questions} onDelete={handleDelete} />
+        ))}
+      </ul>
     </section>
   );
 }
